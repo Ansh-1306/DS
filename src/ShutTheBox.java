@@ -40,8 +40,8 @@ public class ShutTheBox {
 					next = false;
 					if (sum == (dice1 + dice2)) {
 						for (String num : number) {
-							gameBoard = changeGameBoard(num, gameBoard);
-						}
+                            changeGameBoard(num, gameBoard);
+                        }
 						if (checkVictory(gameBoard)) {
 							printGameBoard(gameBoard, 0, 0);
 							System.out.printf("\n%35s\n", "YOU WON!");
@@ -62,7 +62,7 @@ public class ShutTheBox {
 	public static void printGameBoard(String[][] gameBoard, int dice1, int dice2) throws InterruptedException {
 		System.out.println();
 		for (String[] row : gameBoard) {
-			System.out.print(String.format("%23s", " "));
+			System.out.printf("%23s", " ");
 			for (String col : row) {
 				System.out.print(col);
 				Thread.sleep(20);
@@ -77,19 +77,19 @@ public class ShutTheBox {
 		}
 		if (dice1 + dice2 < 10) {
 			System.out.println();
-			System.out.println(String.format("%41s", "+---+  +---+     +---+"));
+			System.out.printf("%41s%n", "+---+  +---+     +---+");
 			Thread.sleep(50);
-			System.out.println(String.format("%41s", s));
+			System.out.printf("%41s%n", s);
 			Thread.sleep(50);
-			System.out.println(String.format("%41s", "+---+  +---+     +---+"));
-			System.out.println(String.format("%41s", "DICE 1  DICE 2    TOTAL"));
+			System.out.printf("%41s%n", "+---+  +---+     +---+");
+			System.out.printf("%41s%n", "DICE 1  DICE 2    TOTAL");
 		} else {
-			System.out.println(String.format("%41s", "+---+  +---+     +----+"));
+			System.out.printf("%41s%n", "+---+  +---+     +----+");
 			Thread.sleep(50);
-			System.out.println(String.format("%41s", s));
+			System.out.printf("%41s%n", s);
 			Thread.sleep(50);
-			System.out.println(String.format("%41s", "+---+  +---+     +----+"));
-			System.out.println(String.format("%40s", "DICE 1  DICE 2    TOTAL"));
+			System.out.printf("%41s%n", "+---+  +---+     +----+");
+			System.out.printf("%40s%n", "DICE 1  DICE 2    TOTAL");
 		}
 		System.out.println();
 	}
@@ -97,85 +97,56 @@ public class ShutTheBox {
 	public static boolean checkGameBoard(String num, String[][] gameBoard) {
 		switch (Integer.parseInt(num)) {
 			case 1:
-				if (gameBoard[0][0] == " 1 ") {
-					return true;
-				}
-				return false;
-			case 2:
-				if (gameBoard[0][2] == " 2 ") {
-					return true;
-				}
-				return false;
-			case 3:
-				if (gameBoard[0][4] == " 3 ") {
-					return true;
-				}
-				return false;
-			case 4:
-				if (gameBoard[2][0] == " 4 ") {
-					return true;
-				}
-				return false;
-			case 5:
-				if (gameBoard[2][2] == " 5 ") {
-					return true;
-				}
-				return false;
-			case 6:
-				if (gameBoard[2][4] == " 6 ") {
-					return true;
-				}
-				return false;
-			case 7:
-				if (gameBoard[4][0] == " 7 ") {
-					return true;
-				}
-				return false;
-			case 8:
-				if (gameBoard[4][2] == " 8 ") {
-					return true;
-				}
-				return false;
-			case 9:
-				if (gameBoard[4][4] == " 9 ") {
-					return true;
-				}
-				return false;
-		}
+                return gameBoard[0][0] == " 1 ";
+            case 2:
+                return gameBoard[0][2] == " 2 ";
+            case 3:
+                return gameBoard[0][4] == " 3 ";
+            case 4:
+                return gameBoard[2][0] == " 4 ";
+            case 5:
+                return gameBoard[2][2] == " 5 ";
+            case 6:
+                return gameBoard[2][4] == " 6 ";
+            case 7:
+                return gameBoard[4][0] == " 7 ";
+            case 8:
+                return gameBoard[4][2] == " 8 ";
+            case 9:
+                return gameBoard[4][4] == " 9 ";
+        }
 		return false;
 	}
 
-	public static String[][] changeGameBoard(String num, String[][] gameBoard) {
+	public static void changeGameBoard(String num, String[][] gameBoard) {
 		switch (Integer.parseInt(num)) {
 			case 1:
 				gameBoard[0][0] = " X ";
-				return gameBoard;
+				return;
 			case 2:
 				gameBoard[0][2] = " X ";
-				return gameBoard;
+				return;
 			case 3:
 				gameBoard[0][4] = " X ";
-				return gameBoard;
+				return;
 			case 4:
 				gameBoard[2][0] = " X ";
-				return gameBoard;
+				return;
 			case 5:
 				gameBoard[2][2] = " X ";
-				return gameBoard;
+				return;
 			case 6:
 				gameBoard[2][4] = " X ";
-				return gameBoard;
+				return;
 			case 7:
 				gameBoard[4][0] = " X ";
-				return gameBoard;
+				return;
 			case 8:
 				gameBoard[4][2] = " X ";
-				return gameBoard;
+				return;
 			case 9:
 				gameBoard[4][4] = " X ";
-				return gameBoard;
 		}
-		return gameBoard;
 	}
 
 	public static boolean checkVictory(String[][] gameBoard) {

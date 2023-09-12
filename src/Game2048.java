@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 class Game2048 {
     private static final int SIZE = 4;
-    private int[][] board;
-    private Random random;
+    private final int[][] board;
+    private final Random random;
     private boolean gameOver;
 
     public Game2048() throws InterruptedException {
