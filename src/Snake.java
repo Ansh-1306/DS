@@ -50,8 +50,7 @@ public class Snake {
                         } else if (j + 1 < 10 && board[i][j] - 1 == board[i][j + 1]) {
                             nextPointer = "R";
                         } else {
-                            System.out.print("i:" + i + "j:" + "b:" + board[i][j] + " " + board[i + 1][j] + ""
-                                    + board[i - 1][j] + "" + board[i][j + 1] + "" + board[i][j - 1]);
+                            System.out.print("i:" + i + "j:" + "b:" + board[i][j] + " " + board[i + 1][j] + board[i - 1][j] + board[i][j + 1] + board[i][j - 1]);
                         }
 
                         if (i - 1 >= 0 && board[i][j] + 1 == board[i - 1][j]) {
@@ -63,7 +62,7 @@ public class Snake {
                         } else if (j + 1 < 10 && board[i][j] + 1 == board[i][j + 1]) {
                             prevPointer = "R";
                         }
-                        if (prevPointer == "") {
+                        if (prevPointer.isEmpty()) {
                             if (Snake1.prevTaili - i == -1) {
                                 prevPointer = "U";
                             } else if (Snake1.prevTailj - j == -1) {
@@ -190,7 +189,7 @@ class Snake1 {
     String direction = "R";
     int fi, fj;
 
-    class Body {
+    static class Body {
 
         Body nextPart;
         Body prevPart;
@@ -209,10 +208,10 @@ class Snake1 {
     void addBody(int[][] board) {
         bodyLength++;
         if (tail == null) {
-            head = tail = new Body(4, 4, bodyLength);
+            head = tail = new Snake1.Body(4, 4, bodyLength);
             board[4][4] = bodyLength;
         } else {
-            Body newBody = new Body(prevTaili, prevTailj, bodyLength);
+            Body newBody = new Snake1.Body(prevTaili, prevTailj, bodyLength);
             newBody.nextPart = tail;
             tail.prevPart = newBody;
             tail = newBody;
@@ -272,12 +271,9 @@ class Snake1 {
 
     void generateFood(int[][] board) {
         do {
-            fi = 0 + (int) (Math.random() * board.length);
-            fj = 0 + (int) (Math.random() * board[0].length);
+            fi = (int) (Math.random() * board.length);
+            fj = (int) (Math.random() * board[0].length);
             System.out.println(fi + " " + fj);
-            if (bodyLength == 1 && (fi == 5 || fi == 3 || fj == 3 || fj == 5)) {
-                continue;
-            }
         } while (board[fi][fj] != 0);
         board[fi][fj] = -1;
 

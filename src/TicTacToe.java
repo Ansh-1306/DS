@@ -81,9 +81,9 @@ public class TicTacToe {
             Thread.sleep(200);
             sc.nextLine();
         } else {
-            if (name == "Player" && count <= 8) {
+            if (name.equals("Player") && count <= 8) {
                 AIMove();
-            } else if (name == "Player" && count == 9) {
+            } else if (name.equals("Player") && count == 9) {
                 System.out.printf("\n%33s\n","DRAW!");
             } else {
                 makeMove();
@@ -226,8 +226,7 @@ public class TicTacToe {
     boolean isValid(int pos) // Check if the move is valid
     {
         if (!(usermoves.contains(pos) || aimoves.contains(pos))) {
-            if (pos < 10 && pos > 0)
-                return true;
+            return pos < 10 && pos > 0;
         }
         return false;
     }
@@ -254,12 +253,7 @@ public class TicTacToe {
 
     boolean checkDiagWin() // Check diagonal win
     {
-        if (board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2]
-                || board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
-            return true;
-        }
-
-        return false;
+        return board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2] || board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0];
     }
 
 }
