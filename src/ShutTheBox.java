@@ -45,13 +45,13 @@ public class ShutTheBox {
 						if (checkVictory(gameBoard)) {
 							printGameBoard(gameBoard, 0, 0);
 							System.out.printf("\n%35s\n", "YOU WON!");
-							Thread.sleep(1000);
+							
 							return;
 						}
 					} else {
 						printGameBoard(gameBoard, 0, 0);
 						System.out.printf("\n%35s\n", "GAME OVER!");
-						Thread.sleep(1000);
+						
 						return;
 					}
 				}

@@ -12,13 +12,13 @@ public class TicTacToe {
     TicTacToe() throws InterruptedException {
         System.out.println("\n\n================ ! Welcome to Tic Tac Toe ! ================\n");
         board = new char[3][3];
-        System.out.printf("%37s\n","-------------");
-        System.out.printf("%37s\n","| 1 | 2 | 3 |");
-        System.out.printf("%37s\n","-------------");
-        System.out.printf("%37s\n","| 4 | 5 | 6 |");
-        System.out.printf("%37s\n","-------------");
-        System.out.printf("%37s\n","| 7 | 8 | 9 |");
-        System.out.printf("%37s\n","-------------");
+        System.out.printf("%37s\n", "-------------");
+        System.out.printf("%37s\n", "| 1 | 2 | 3 |");
+        System.out.printf("%37s\n", "-------------");
+        System.out.printf("%37s\n", "| 4 | 5 | 6 |");
+        System.out.printf("%37s\n", "-------------");
+        System.out.printf("%37s\n", "| 7 | 8 | 9 |");
+        System.out.printf("%37s\n", "-------------");
         initializeBoard();
         printBoard();
         makeMove();
@@ -35,18 +35,18 @@ public class TicTacToe {
 
     void printBoard() throws InterruptedException // Print Board after every move
     {
-        System.out.printf("%37s\n","-------------");
-        Thread.sleep(100);
+        System.out.printf("%37s\n", "-------------");
+
         for (int i = 0; i < 3; i++) {
-            System.out.printf("%26s","| ");
+            System.out.printf("%26s", "| ");
             for (int j = 0; j < 3; j++) {
                 System.out.printf(board[i][j] + " | ");
-                Thread.sleep(100);
+
             }
             System.out.println();
-            System.out.printf("%37s\n","-------------");
+            System.out.printf("%37s\n", "-------------");
         }
-        Thread.sleep(100);
+
     }
 
     void placeMark(int pos, char mark, String name) throws InterruptedException // Placing mark on board
@@ -71,36 +71,36 @@ public class TicTacToe {
             else
                 board[2][2] = mark;
         } else {
-            System.out.printf("%20s\n","Invalid Input");
-            
+            System.out.printf("%20s\n", "Invalid Input");
+
         }
         printBoard();
         count++;
         if (checkColWin() || checkRowWin() || checkDiagWin()) {
-            System.out.printf("\n%35s\n","YOU LOST!");
-            Thread.sleep(200);
+            System.out.printf("\n%35s\n", "YOU LOST!");
+
             sc.nextLine();
         } else {
             if (name.equals("Player") && count <= 8) {
                 AIMove();
             } else if (name.equals("Player") && count == 9) {
-                System.out.printf("\n%33s\n","DRAW!");
+                System.out.printf("\n%33s\n", "DRAW!");
             } else {
                 makeMove();
             }
         }
     }
-    
+
     void makeMove() throws InterruptedException // Player Move
     {
-        System.out.printf("\n%20s","Enter position : ");
+        System.out.printf("\n%20s", "Enter position : ");
         int pos = sc.nextInt();
         System.out.println();
         if (isValid(pos)) {
             usermoves.add(pos);
             placeMark(pos, 'X', "Player");
         } else {
-            System.out.printf("\n%16s\n","Invalid Input");
+            System.out.printf("\n%16s\n", "Invalid Input");
             makeMove();
         }
     }
@@ -210,7 +210,7 @@ public class TicTacToe {
             int t;
             while (!isValid(t = (random.nextInt(5) * 2) + 1)) {
             }
-            pos=t;
+            pos = t;
             aimoves.add(pos);
             placeMark(pos, 'O', "Computer");
         } else {
@@ -253,7 +253,8 @@ public class TicTacToe {
 
     boolean checkDiagWin() // Check diagonal win
     {
-        return board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2] || board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0];
+        return board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2]
+                || board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0];
     }
 
 }

@@ -189,8 +189,6 @@ class Game2048 {
         }
 
         printBoard();
-        Thread.sleep(
-            1000);
         System.out.println("\t\t\t GAME OVER!\n");
     }
 }
