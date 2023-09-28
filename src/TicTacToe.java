@@ -9,7 +9,7 @@ public class TicTacToe {
     HashSet<Integer> usermoves = new HashSet<>();
     HashSet<Integer> aimoves = new HashSet<>();
 
-    TicTacToe() throws InterruptedException {
+    TicTacToe() {
         System.out.println("\n\n================ ! Welcome to Tic Tac Toe ! ================\n");
         board = new char[3][3];
         System.out.printf("%37s\n", "-------------");
@@ -33,7 +33,7 @@ public class TicTacToe {
         }
     }
 
-    void printBoard() throws InterruptedException // Print Board after every move
+    void printBoard() // Print Board after every move
     {
         System.out.printf("%37s\n", "-------------");
 
@@ -49,7 +49,7 @@ public class TicTacToe {
 
     }
 
-    void placeMark(int pos, char mark, String name) throws InterruptedException // Placing mark on board
+    void placeMark(int pos, char mark, String name)  // Placing mark on board
     {
         if (pos >= 1 && pos <= 9) {
             if (pos == 1)
@@ -91,7 +91,7 @@ public class TicTacToe {
         }
     }
 
-    void makeMove() throws InterruptedException // Player Move
+    void makeMove() // Player Move
     {
         System.out.printf("\n%20s", "Enter position : ");
         int pos = sc.nextInt();
@@ -105,7 +105,7 @@ public class TicTacToe {
         }
     }
 
-    void AIMove() throws InterruptedException // Computer Move
+    void AIMove() // Computer Move
     {
         int pos;
         if (isValid(5)) {

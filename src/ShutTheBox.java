@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ShutTheBox {
 	Scanner sc = new Scanner(System.in);
 
-	ShutTheBox() throws InterruptedException {
+	ShutTheBox()  {
 		String[][] gameBoard = { { " 1 ", " | ", " 2 ", " | ", " 3 " }, { "---", "-+-", "---", "-+-", "---" },
 				{ " 4 ", " | ", " 5 ", " | ", " 6 " }, { "---", "-+-", "---", "-+-", "---" },
 				{ " 7 ", " | ", " 8 ", " | ", " 9 " } };
@@ -59,16 +59,14 @@ public class ShutTheBox {
 		}
 	}
 
-	public static void printGameBoard(String[][] gameBoard, int dice1, int dice2) throws InterruptedException {
+	public static void printGameBoard(String[][] gameBoard, int dice1, int dice2) {
 		System.out.println();
 		for (String[] row : gameBoard) {
 			System.out.printf("%23s", " ");
 			for (String col : row) {
 				System.out.print(col);
-				Thread.sleep(20);
 			}
 			System.out.println();
-			Thread.sleep(100);
 		}
 		String s = "| " + dice1 + " |  | " + dice2 + " |  =  | " + (dice1 + dice2) + " |";
 		System.out.println();
@@ -78,16 +76,12 @@ public class ShutTheBox {
 		if (dice1 + dice2 < 10) {
 			System.out.println();
 			System.out.printf("%41s%n", "+---+  +---+     +---+");
-			Thread.sleep(50);
 			System.out.printf("%41s%n", s);
-			Thread.sleep(50);
 			System.out.printf("%41s%n", "+---+  +---+     +---+");
 			System.out.printf("%41s%n", "DICE 1  DICE 2    TOTAL");
 		} else {
 			System.out.printf("%41s%n", "+---+  +---+     +----+");
-			Thread.sleep(50);
 			System.out.printf("%41s%n", s);
-			Thread.sleep(50);
 			System.out.printf("%41s%n", "+---+  +---+     +----+");
 			System.out.printf("%40s%n", "DICE 1  DICE 2    TOTAL");
 		}

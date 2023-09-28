@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -7,7 +6,7 @@ public class GameZone {
     static Scanner sc = new Scanner(System.in);
     static int Balance = 10000;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         System.out.println(
                 "====================================================================================================================================");
         System.out.println(

@@ -7,7 +7,7 @@ class Game2048 {
     private final Random random;
     private boolean gameOver;
 
-    public Game2048() throws InterruptedException {
+    public Game2048() {
         System.out.println("\n\n===================== !    2048    ! =====================\n");
 
         board = new int[SIZE][SIZE];
@@ -30,13 +30,12 @@ class Game2048 {
         board[row][col] = value;
     }
 
-    private void printBoard() throws InterruptedException {
+    private void printBoard() {
         for (int[] row : board) {
             System.out.printf("%17s", " ");
             for (int cell : row) {
                 System.out.printf("%5d", cell);
             }
-            Thread.sleep(100);
             System.out.println();
         }
         System.out.println();
@@ -158,7 +157,7 @@ class Game2048 {
         return true;
     }
 
-    public void playGame() throws InterruptedException {
+    public void playGame()  {
         Scanner sc = new Scanner(System.in);
 
         while (!gameOver) {
