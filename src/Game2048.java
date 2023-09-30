@@ -166,6 +166,9 @@ class Game2048 {
             String move = sc.next().toUpperCase();
             System.out.println();
             switch (move) {
+                case "Q":
+                    gameOver=true;
+                    continue;
                 case "W":
                     moveUp();
                     break;
@@ -179,7 +182,7 @@ class Game2048 {
                     moveRight();
                     break;
                 default:
-                    System.out.println("\n   Invalid move. Use W/A/S/D.\n");
+                    System.out.println("\t\t       INVALID MOVE\n");
                     continue;
             }
 

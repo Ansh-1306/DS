@@ -21,9 +21,11 @@ public class ShutTheBox {
 				String inp = sc.nextLine();
 				System.out.println();
 				String[] number = (inp.trim()).split(" ");
+				//this loop for checking valid user inputs.
 				for (String num : number) {
 					if (checkDigit(num, 1, 9, 1)) {
 						if (!(checkGameBoard(num, gameBoard))) {
+							//slot available then else condition. not available then if.
 							System.out.println("  " + num + " IS ALREADY USED .");
 							change = false;
 						} else {
@@ -36,14 +38,18 @@ public class ShutTheBox {
 						break;
 					}
 				}
+				//logic to check if user input satisfies game condition.
 				if (change) {
 					next = false;
 					if (sum == (dice1 + dice2)) {
+						//user input satisfies condition then if or else(game over).
 						for (String num : number) {
+							//make unavailable the number used.
                             changeGameBoard(num, gameBoard);
                         }
 						if (checkVictory(gameBoard)) {
 							printGameBoard(gameBoard, 0, 0);
+							//dice are 0 so only gameboard part will be printed.
 							System.out.printf("\n%35s\n", "YOU WON!");
 							
 							return;
@@ -73,6 +79,7 @@ public class ShutTheBox {
 		if (dice1 == 0) {
 			return;
 		}
+		//above code only prints Matrix
 		if (dice1 + dice2 < 10) {
 			System.out.println();
 			System.out.printf("%41s%n", "+---+  +---+     +---+");
@@ -86,9 +93,11 @@ public class ShutTheBox {
 			System.out.printf("%40s%n", "DICE 1  DICE 2    TOTAL");
 		}
 		System.out.println();
+		//code till here prints matrix + dice.
 	}
 
 	public static boolean checkGameBoard(String num, String[][] gameBoard) {
+		//check number in board available?
 		switch (Integer.parseInt(num)) {
 			case 1:
                 return gameBoard[0][0] == " 1 ";
@@ -113,6 +122,7 @@ public class ShutTheBox {
 	}
 
 	public static void changeGameBoard(String num, String[][] gameBoard) {
+		//change used num to X.
 		switch (Integer.parseInt(num)) {
 			case 1:
 				gameBoard[0][0] = " X ";
@@ -144,6 +154,7 @@ public class ShutTheBox {
 	}
 
 	public static boolean checkVictory(String[][] gameBoard) {
+		//if all X->win or lose.
 		for (int i = 0; i < 5; i += 2) {
 			for (int j = 0; j < 5; j += 2) {
 				if (!(gameBoard[i][j] == " X ")) {
@@ -160,6 +171,7 @@ public class ShutTheBox {
 		}
 		for (int i = 0; i < str.length(); i++) {
 			if (str.charAt(i) < 48 || str.charAt(i) > 58) {
+				//return false if num out of range 1-9.
 				return false;
 			}
 		}
@@ -167,6 +179,7 @@ public class ShutTheBox {
 		for (int i = 0; i < str.length(); i++) {
 			int temp = num % 10;
 			if (temp < start || temp > end) {
+				//return false if num out of range 1-9.
 				return false;
 			}
 			num /= 10;
