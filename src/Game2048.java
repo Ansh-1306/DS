@@ -170,7 +170,7 @@ class Game2048 {
                     gameOver=true;
                     continue;
                 case "W":
-                    moveUp();
+                    moveUp(c:\Users\patel\OneDrive\Desktop\Java Individual\1.txt);
                     break;
                 case "A":
                     moveLeft();
